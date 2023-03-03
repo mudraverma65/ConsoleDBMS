@@ -5,9 +5,6 @@ public class Authentication {
 
     File dbFile;
 
-    public int userLogged = 0;
-    public int userDatabase = 0;
-
     DatabaseHelp dbHelp = new DatabaseHelp();
     public boolean login(){
         Scanner sc = new Scanner(System.in);
@@ -30,14 +27,12 @@ public class Authentication {
             System.out.println("Incorrect Answer");
             return false;
         }
-        userLogged = 1;
         System.out.println("Login Successful");
         return true;
     }
     public boolean signUp(){
         try{
             ArrayList<String> currentUser = new ArrayList<>();
-            //String[] currentUser =new String[4];
             Scanner sc = new Scanner(System.in);
             System.out.println("Enter ID: ");
             currentUser.add(sc.nextLine());
@@ -47,11 +42,9 @@ public class Authentication {
             currentUser.add(sc.nextLine());
             System.out.println("Enter Answer: ");
             currentUser.add(sc.nextLine());
-            //dbHelp.valueCreation(currentUser);
             dbFile = dbHelp.createFile("userData");
-            userDatabase++;
             String values = dbHelp.valueCreation(currentUser);
-            Boolean b1 = dbHelp.writeFile(dbFile, values);
+            dbHelp.writeFile(dbFile, values);
         }
         catch (Exception e){
             return false;

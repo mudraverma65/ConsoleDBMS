@@ -70,10 +70,11 @@ public class Query {
             String[] table = tableInfo.split(",");
             indexes = helperClass.getIndexes(columnName,table);
 
-            //where clause
-            //secondPart[0] = file name
-            //aQuery[1] = rows to display
-            //secondPart[1] = where clause
+            /**
+             * secondPart[0] = file name
+             * aQuery[1] = rows to display
+             * secondPart[1] = where clause
+             * */
 
             if(currentQuery.contains("where")){
                 String[] partTwo = secondPart[1].split("=",2);
